@@ -1,5 +1,6 @@
 package com.depp.bighead;
 
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,9 +24,11 @@ public class MainActivity extends AppCompatActivity {
     };
 
 
-    private static int sHeadIndex =0;
+    private static int sHeadIndex = 0;
     private ImageView mHeadImageView;
     private ImageView mFrontLayer;
+
+    private HeadBitmapHelper mHelper = new HeadBitmapHelper();
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -35,16 +38,23 @@ public class MainActivity extends AppCompatActivity {
         mHeadImageView = (ImageView) findViewById(R.id.head_img);
         mFrontLayer = (ImageView) findViewById(R.id.front_layer);
 
-        mHeadImageView.setOnClickListener(new View.OnClickListener(){
+        mHeadImageView.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                sHeadIndex ++;
+                sHeadIndex++;
                 if (sHeadIndex >= sDrawableId.length) {
                     sHeadIndex = 0;
                 }
 
                 mHeadImageView.setImageResource(sDrawableId[sHeadIndex]);
+                mHeadImageView.setDrawingCacheEnabled(true);
+
+                Bitmap bitmap = mHeadImageView.getDrawingCache();
+                mHelper.setBitmap(bitmap);
+
+                mHeadImageView.setDrawingCacheEnabled(false); //释放内存，否则容易异常
+
             }
         });
 
