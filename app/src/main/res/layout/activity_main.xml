@@ -6,15 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
     <ImageView
         android:id="@+id/head_img"
+        android:layout_width="360dp"
+        android:layout_height="360dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/head1" />
+
+    <ImageView
+        android:id="@+id/head_img_cache"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scaleType="fitXY"
-        android:src="@drawable/head1"/>
+        android:paddingTop="280dp"
+        android:src="@drawable/head2"
+        android:visibility="gone" />
 
     <ImageView
         android:id="@+id/front_layer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="false" />
+
+    <ImageView
+        android:id="@+id/front_layer_cover"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clickable="false"
