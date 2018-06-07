@@ -8,17 +8,22 @@ import android.os.AsyncTask;
 import android.util.DisplayMetrics;
 import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 public class HeadBitmapHelper {
 
 
     /**
      * 截取图片区域的宽度比例，必须小于等于1
      */
-    private final static float WIDTH_PERCENT = 0.5f;
+    private final static float CUT_WIDTH_PERCENT = 0.5f;
     /**
      * 截取图片区域的高度比例，必须小于等于1
      */
-    private final static float HEIGHT_PERCENT = 0.2f;
+    private final static float CUT_HEIGHT_PERCENT = 0.2f;
 
 
     /**
@@ -109,8 +114,8 @@ public class HeadBitmapHelper {
             log("srcBitmap w/h: " + width + "/" + height);
 
             // 取色区域(底部)：（width:0-width; height: offsetHeight-height)
-            int destWidth = (int) (width * WIDTH_PERCENT);
-            int destHeight = (int) (height * HEIGHT_PERCENT);
+            int destWidth = (int) (width * CUT_WIDTH_PERCENT);
+            int destHeight = (int) (height * CUT_HEIGHT_PERCENT);
 
             // 图片像素Ｘ|Ｙ轴偏移像素数
             int offsetX = (width - destWidth) / 2;
@@ -120,12 +125,12 @@ public class HeadBitmapHelper {
             int[] pixels = new int[destWidth * destHeight];
             mSrcBitmap.getPixels(pixels, 0, destWidth, offsetX, offsetY, destWidth, destHeight);
 
-            getPrimaryColor(pixels);
+//            getPrimaryColor(pixels);
+            getPrimaryColorByWeight(pixels);
 
             //透明化处理
             doAlpha(pixels, destWidth, destHeight);
-            mCutBitmap = Bitmap.createBitmap(pixels, 0, destWidth, destWidth, destHeight,
-                    Bitmap.Config.ARGB_8888);
+            mCutBitmap = Bitmap.createBitmap(pixels, 0, destWidth, destWidth, destHeight, Bitmap.Config.ARGB_8888);
 
 
             // TODO 生成混合蒙层图
@@ -180,19 +185,16 @@ public class HeadBitmapHelper {
         }
         log("argb(TOTAL): " + countAlpha + ", " + countRed + ", " + countGreen + ", " + countBlue + " SIZE:" + PIXEL_SIZE);
 
-        mCutColor = Color.argb(countAlpha / PIXEL_SIZE,
-                countRed / PIXEL_SIZE, countGreen / PIXEL_SIZE, countBlue / PIXEL_SIZE);
+        mCutColor = Color.argb(countAlpha / PIXEL_SIZE, countRed / PIXEL_SIZE, countGreen / PIXEL_SIZE, countBlue / PIXEL_SIZE);
 
 
         return mCutColor;
     }
 
     private int getPrimaryColorByWeight(int[] pixels) {
-        int[] colorArray = new int[pixels.length];
-        System.arraycopy(pixels, 0, colorArray, 0, pixels.length);
+        int[] result = sortResult(pixels);
 
-        sortCore(colorArray, 0, colorArray.length);
-
+        getPrimaryColor(result);
         return mCutColor;
     }
 
@@ -212,7 +214,7 @@ public class HeadBitmapHelper {
         int[] mixedPixels = new int[width * height];
 
         int srcHeight = mSrcBitmap.getHeight();
-        int alphaHeight = (int) srcHeight / 4;
+        int alphaHeight = (int) srcHeight / 3;
         int offsetY = srcHeight - alphaHeight;
 
         for (int j = offsetY; j < height; j++) {
@@ -228,8 +230,7 @@ public class HeadBitmapHelper {
         }
 
 
-        mMixedFrontLayerBitmap = Bitmap.createBitmap(mixedPixels, 0, width, width, height,
-                Bitmap.Config.ARGB_8888);
+        mMixedFrontLayerBitmap = Bitmap.createBitmap(mixedPixels, 0, width, width, height, Bitmap.Config.ARGB_8888);
 
         return mMixedFrontLayerBitmap;
     }
@@ -251,7 +252,7 @@ public class HeadBitmapHelper {
         int[] mixedPixels = new int[width * height];
 
         int srcHeight = mSrcBitmap.getHeight();
-        int alphaHeight = (int) (srcHeight * HEIGHT_PERCENT) * 2;
+        int alphaHeight = (int) (srcHeight * CUT_HEIGHT_PERCENT) * 2;
         int offsetY = srcHeight - alphaHeight;
 
 
@@ -265,9 +266,9 @@ public class HeadBitmapHelper {
         for (int j = 0; j < height; j++) {
             int cutAlpha = 255;
             int destColor = 0;
-            if ( j < offsetY) {
+            if (j < offsetY) {
                 cutAlpha = 0;
-            } else    if (j >= offsetY) {
+            } else if (j >= offsetY) {
                 if (j < srcHeight && j >= offsetY) {
                     cutAlpha = 255 - 255 * (srcHeight - j) / alphaHeight;
                 }
@@ -296,8 +297,7 @@ public class HeadBitmapHelper {
         }
 
 
-        mMixedFrontLayerBitmap = Bitmap.createBitmap(mixedPixels, 0, width, width, height,
-                Bitmap.Config.ARGB_8888);
+        mMixedFrontLayerBitmap = Bitmap.createBitmap(mixedPixels, 0, width, width, height, Bitmap.Config.ARGB_8888);
 
         return mMixedFrontLayerBitmap;
     }
@@ -357,27 +357,61 @@ public class HeadBitmapHelper {
         return leftIndex;
     }
 
-    private void sort(int[] colors){
+    private int[] sortResult(int[] pixels) {
+
+        List<WeightColor> list = new ArrayList<WeightColor>();
+
+        for (int i = 0; i < pixels.length; i++) {
+            list.add(new WeightColor(pixels[i]));
+        }
+
+        Collections.sort(list, new Comparator<WeightColor>() {
+            @Override
+            public int compare(WeightColor wc1, WeightColor wc2) {
+                if (wc1.weight > wc2.weight) {
+                    return 1;
+                } else if(wc1.weight == wc2.weight) {
+                    return 0;
+                } else {
+                    return -1;
+                }
+            }
+        });
+
+        log(list.toString());
 
 
-//         Collections.sort(intList,new Comparator<Integer>() {
-//
-//            @Override
-//            public int compare(Integer o1, Integer o2) {
-//                // 返回值为int类型，大于0表示正序，小于0表示逆序
-//                return o2-o1;
-//            }
-//        });
+        int[] result = new int[list.size()*4/5];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = list.get(i).color;
+        }
+
+        return result;
     }
 
+
+    private static class WeightColor {
+        int color;
+        float weight;
+
+        private WeightColor(int color) {
+            this.color = color;
+            this.weight = getColorWeight(color);
+        }
+
         /**
-     * 获取颜色深度权重，权重越大，颜色越浅
-     */
-    private float getColorWeight(int color) {
-        int r = Color.red(color);
-        int g = Color.green(color);
-        int b = Color.blue(color);
-        return r * 0.299f + g * 0.578f + b * 0.114f;
+         * 获取颜色深度权重，权重越大，颜色越浅
+         */
+        private float getColorWeight(int color) {
+            int r = Color.red(color);
+            int g = Color.green(color);
+            int b = Color.blue(color);
+            return r * 0.299f + g * 0.578f + b * 0.114f;
+        }
+
+        public String toString(){
+            return "color:"+color+", weight:"+weight;
+        }
     }
 
 
