@@ -23,7 +23,7 @@ public class HeadBitmapHelper {
     /**
      * 截取图片区域的高度比例，必须小于等于1
      */
-    private final static float CUT_HEIGHT_PERCENT = 0.2f;
+    private final static float CUT_HEIGHT_PERCENT = 0.1f;
 
 
     /**
@@ -47,7 +47,7 @@ public class HeadBitmapHelper {
     /**
      * 根据取色生成的渐变混合蒙层图
      */
-    private Bitmap mMixedFrontLayerBitmap;
+    private Bitmap mBitmapExtra;
 
     /**
      * 屏幕宽
@@ -63,8 +63,11 @@ public class HeadBitmapHelper {
         void onExceuteDone();
     }
 
+    private Context mContext;
+
 
     public HeadBitmapHelper(Context context) {
+        mContext = context.getApplicationContext();
         DisplayMetrics dm = context.getResources().getDisplayMetrics();
         sScreenWidth = dm.widthPixels;
         sScreenHeight = dm.heightPixels;
@@ -73,11 +76,18 @@ public class HeadBitmapHelper {
         mDefFrontLayerBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.bighead_front_layer);
     }
 
-
-    public void generatePrimaryBitmap(Bitmap bitmap, LoadCallback callback) {
+    public void generateBitmapExtra(LoadCallback callback) {
         if (mSrcBitmap != null) {
             mSrcBitmap.recycle();
         }
+
+        int resId = HeadImages.sDrawableId[HeadImages.sIndex];
+        mSrcBitmap = BitmapFactory.decodeResource(mContext.getResources(), resId);
+
+        generatePrimaryBitmap(mSrcBitmap, callback);
+    }
+
+    private void generatePrimaryBitmap(Bitmap bitmap, LoadCallback callback) {
 
         if (bitmap == null) {
             mSrcBitmap = null;
@@ -93,9 +103,12 @@ public class HeadBitmapHelper {
         return mCutBitmap;
     }
 
+    public Bitmap getCurBitmap(){
+        return mSrcBitmap;
+    }
 
-    public Bitmap getMixedFrontLayerBitmap() {
-        return mMixedFrontLayerBitmap;
+    public Bitmap getBitmapExtra() {
+        return mBitmapExtra;
     }
 
     private class BitmapTask extends AsyncTask<Void, Void, Void> {
@@ -135,7 +148,7 @@ public class HeadBitmapHelper {
 
             // TODO 生成混合蒙层图
 //            generateMixFrontLayerBitmap();
-            generateCutFrontLayerBitmap();
+            generateBitmapExtra();
             return null;
         }
 
@@ -194,8 +207,7 @@ public class HeadBitmapHelper {
     private int getPrimaryColorByWeight(int[] pixels) {
         int[] result = sortResult(pixels);
 
-        getPrimaryColor(result);
-        return mCutColor;
+        return getPrimaryColor(result);
     }
 
     /**
@@ -203,7 +215,7 @@ public class HeadBitmapHelper {
      *
      * @return
      */
-    private Bitmap generateCutFrontLayerBitmap() {
+    private Bitmap generateBitmapExtra() {
         int width = sScreenWidth;
         int height = sScreenHeight;
 
@@ -213,13 +225,13 @@ public class HeadBitmapHelper {
 
         int[] mixedPixels = new int[width * height];
 
-        int srcHeight = mSrcBitmap.getHeight();
-        int alphaHeight = (int) srcHeight / 3;
+        int srcHeight = sScreenWidth;
+        int alphaHeight = (int) sScreenWidth / 3;
         int offsetY = srcHeight - alphaHeight;
 
-        for (int j = offsetY; j < height; j++) {
+        for (int j = offsetY+1; j < height; j++) {
             int destAlpha = 255;
-            if (j < srcHeight && j >= offsetY) {
+            if (j < srcHeight && j > offsetY) {
                 destAlpha = 255 - 255 * (srcHeight - j) / alphaHeight;
             }
             int destColor = Color.argb(destAlpha, destRed, destGreen, destBlue);
@@ -230,78 +242,10 @@ public class HeadBitmapHelper {
         }
 
 
-        mMixedFrontLayerBitmap = Bitmap.createBitmap(mixedPixels, 0, width, width, height, Bitmap.Config.ARGB_8888);
+        mBitmapExtra = Bitmap.createBitmap(mixedPixels, 0, width, width, height, Bitmap.Config.ARGB_8888);
 
-        return mMixedFrontLayerBitmap;
+        return mBitmapExtra;
     }
-
-
-    /**
-     * @return
-     * @deprecated 合成取色图+视觉提供的默认蒙层图
-     */
-
-    private Bitmap generateMixFrontLayerBitmap() {
-        int width = sScreenWidth;
-        int height = sScreenHeight;
-
-        int cutRed = Color.red(mCutColor);
-        int cutGreen = Color.green(mCutColor);
-        int cutBlue = Color.blue(mCutColor);
-
-        int[] mixedPixels = new int[width * height];
-
-        int srcHeight = mSrcBitmap.getHeight();
-        int alphaHeight = (int) (srcHeight * CUT_HEIGHT_PERCENT) * 2;
-        int offsetY = srcHeight - alphaHeight;
-
-
-        // 获取默认蒙层
-        int defWidth = mDefFrontLayerBitmap.getWidth();
-        int defHeigth = mDefFrontLayerBitmap.getHeight();
-        int[] defPixel = new int[defHeigth];
-
-        mDefFrontLayerBitmap.getPixels(defPixel, 0, 1, 0, 0, 1, defHeigth);
-
-        for (int j = 0; j < height; j++) {
-            int cutAlpha = 255;
-            int destColor = 0;
-            if (j < offsetY) {
-                cutAlpha = 0;
-            } else if (j >= offsetY) {
-                if (j < srcHeight && j >= offsetY) {
-                    cutAlpha = 255 - 255 * (srcHeight - j) / alphaHeight;
-                }
-
-                int defAlpha = Color.alpha(defPixel[j]);
-                int defRed = Color.red(defPixel[j]);
-                int defGreen = Color.green(defPixel[j]);
-                int defBlue = Color.blue(defPixel[j]);
-
-
-                int mixedAlpha = cutAlpha > defAlpha ? defAlpha : cutAlpha;
-                int mixedRed = (cutRed + defRed) / 2;
-                int mixedGreen = (cutGreen + defGreen) / 2;
-                int mixedBlue = (cutBlue + defBlue) / 2;
-
-                destColor = Color.argb(mixedAlpha, mixedRed, mixedGreen, mixedBlue);
-            }
-
-            for (int i = 0; i < width; i++) {
-                if (j < offsetY) {
-//                    mixedPixels[j * width + i] = defPixel[j];
-                } else {
-                    mixedPixels[j * width + i] = destColor;
-                }
-            }
-        }
-
-
-        mMixedFrontLayerBitmap = Bitmap.createBitmap(mixedPixels, 0, width, width, height, Bitmap.Config.ARGB_8888);
-
-        return mMixedFrontLayerBitmap;
-    }
-
 
     /*
      * 排序的核心算法
@@ -378,10 +322,8 @@ public class HeadBitmapHelper {
             }
         });
 
-        log(list.toString());
 
-
-        int[] result = new int[list.size()*4/5];
+        int[] result = new int[list.size()*3/5];
         for (int i = 0; i < result.length; i++) {
             result[i] = list.get(i).color;
         }

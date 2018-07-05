@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">BigHeadDemo</string>
+
+    <string name="add">添加</string>
+    <string name="add_call">添加通话</string>
+    <string name="mute_call">静音</string>
+    <string name="speaker">扬声器</string>
+    <string name="record_num">便签记录</string>
+    <string name="hold_call">保持</string>
+    <string name="dialpad">键盘</string>
+    <string name="record">录音</string>
+    <string name="merge_call">合并通话</string>
+    <string name="swap_call">切换通话</string>
 </resources>

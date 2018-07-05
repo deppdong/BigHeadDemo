@@ -1,11 +1,35 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+        <item name="android:navigationBarColor">@android:color/holo_green_dark</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 
+    <!-- Buttons in the main "button row" of the in-call onscreen touch UI. -->
+    <style name="inCallButtonStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/transparent</item>
+    </style>
+
+    <!-- Buttons in the main "button row" of the in-call onscreen touch UI. -->
+    <style name="callButtonStyle">
+        <item name="android:layout_width">0px</item>
+        <item name="android:layout_height">wrap_content</item><!-- Flyme5.0 -->
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">12sp</item> <!-- Flyme7.0 -->
+        <item name="android:singleLine">true</item>
+        <item name="android:drawablePadding">8dp</item> <!-- Flyme7 -->
+        <item name="android:paddingBottom">0dip</item> <!-- Flyme5.0 -->
+        <item name="android:paddingTop">0dip</item> <!-- Flyme5.0 -->
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:fontFamily">sans-serif-medium</item> <!-- Flyme6.0 -->
+        <item name="android:gravity">center</item> <!-- Flyme6.0 -->
+        <item name="android:textColor">@drawable/call_button_text_color</item> <!-- Flyme6.0 -->
+    </style>
 </resources>

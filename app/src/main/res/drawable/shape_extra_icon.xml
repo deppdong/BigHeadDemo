@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- FLYME:zhulanting@MzCallSetting: [tencent c2b call, 2016/5/26] -->
+<!-- FLYME6:Depp#通话中图标置灰 -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item><shape android:shape="rectangle">
+            <size android:height="@dimen/extra_call_icon_height" android:width="@dimen/extra_call_icon_width" />
+
+            <stroke android:width="2px" android:color="@color/incall_text_color_secondary" />
+
+            <corners android:radius="1dip" />
+        </shape></item>
+
+</selector>

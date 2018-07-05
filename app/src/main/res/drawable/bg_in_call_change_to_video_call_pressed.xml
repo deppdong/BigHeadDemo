@@ -1,0 +1,16 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle" >
+
+    <size android:height="@dimen/bg_in_call_to_video_height" />
+
+    <stroke
+        android:width="@dimen/bg_in_call_to_video_stroke"
+        android:color="@drawable/call_button_hightlight_color" />
+
+    <corners
+        android:bottomLeftRadius="@dimen/bg_in_call_to_video_radius"
+        android:bottomRightRadius="@dimen/bg_in_call_to_video_radius"
+        android:topLeftRadius="@dimen/bg_in_call_to_video_radius"
+        android:topRightRadius="@dimen/bg_in_call_to_video_radius" />
+
+</shape>

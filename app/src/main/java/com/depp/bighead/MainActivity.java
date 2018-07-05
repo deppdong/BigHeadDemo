@@ -1,77 +1,66 @@
 package com.depp.bighead;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 
-public class MainActivity extends AppCompatActivity implements HeadBitmapHelper.LoadCallback {
+import com.depp.machine.state.StateMachineTest;
 
-    private final static int[] sDrawableId = new int[]{
-            R.drawable.head1,
-            R.drawable.head2,
-//            R.drawable.head3,
-            R.drawable.head4,
-            R.drawable.head5,
-            R.drawable.head6,
-            R.drawable.head7,
-            R.drawable.head8,
-            R.drawable.head9,
-            R.drawable.head10,
-            R.drawable.head11,
-    };
+public class MainActivity extends AppCompatActivity {
 
-    private static int sHeadIndex = 0;
+
     private ImageView mHeadImageView;
-    private ImageView mFrontLayer;
-
-    private ImageView mCutBitmapView;
-
-    private HeadBitmapHelper mHelper;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
-
-        mHelper = new HeadBitmapHelper(this);
+//        NavigationBarUtils.setDarkIconColor(getWindow(), true, true);   //第二个参数设置导航栏图标颜色 true=黑色  false 白色
 
         mHeadImageView = (ImageView) findViewById(R.id.head_img);
-        mFrontLayer = (ImageView) findViewById(R.id.front_layer);
-        mCutBitmapView = (ImageView) findViewById(R.id.head_img_cache);
+        mHeadImageView.setImageResource(HeadImages.sDrawableId[HeadImages.sIndex]);
 
         mHeadImageView.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                sHeadIndex++;
-                if (sHeadIndex >= sDrawableId.length) {
-                    sHeadIndex = 0;
+                HeadImages.sIndex++;
+                if (HeadImages.sIndex >= HeadImages.sDrawableId.length) {
+                    HeadImages.sIndex = 0;
                 }
 
-                mHeadImageView.setImageResource(sDrawableId[sHeadIndex]);
+                mHeadImageView.setImageResource(HeadImages.sDrawableId[HeadImages.sIndex]);
                 mHeadImageView.setDrawingCacheEnabled(true);
 
                 Bitmap bitmap = mHeadImageView.getDrawingCache();
-                mHelper.generatePrimaryBitmap(bitmap, MainActivity.this);
-
 
             }
         });
 
+        StateMachineTest.doTest(this);
+
+
+        Button dial = (Button) findViewById(R.id.dial);
+        dial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this, InCallActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                intent.putExtra("img_idx", HeadImages.sIndex);
+                MainActivity.this.startActivity(intent);
+            }
+        });
 
     }
 
-
-    @Override
-    public void onExceuteDone() {
-//        mCutBitmapView.setImageBitmap(mHelper.getCutBitmap());
-        mHeadImageView.setDrawingCacheEnabled(false); //释放内存，否则容易异常
-
-        mFrontLayer.setImageBitmap(mHelper.getMixedFrontLayerBitmap());
-    }
 }
 

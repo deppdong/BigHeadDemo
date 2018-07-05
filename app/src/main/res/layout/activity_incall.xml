@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    tools:context=".MainActivity">
+
+    <FrameLayout
+        android:id="@+id/head_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible">
+
+        <ImageView
+            android:id="@+id/head_img"
+            android:layout_width="360dp"
+            android:layout_height="360dp"
+            android:scaleType="fitXY"/>
+
+        <ImageView
+            android:id="@+id/head_img_extra"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY" />
+
+        <ImageView
+            android:id="@+id/head_img_front"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="false"
+            android:src="@drawable/bighead_front_layer"
+            android:scaleType="fitXY" />
+    </FrameLayout>
+
+
+    <LinearLayout
+        android:id="@+id/callcard"
+        android:layout_width="match_parent"
+        android:layout_height="360dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="280dp"
+            android:text="哈哈啊"
+            android:textColor="@android:color/background_light" />
+
+        <TextView
+            android:id="@+id/number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:text="18224051684 珠海"
+            android:textColor="@android:color/background_light" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/inCallControls"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/inCallButtonsField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/inCallControlsRowUp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/touchui_uplayer_padding_bottom_up"
+                android:paddingLeft="@dimen/touchui_uplayer_padding_hor"
+                android:paddingRight="@dimen/touchui_uplayer_padding_hor"
+                android:paddingTop="0dip">
+
+                <TextView
+                    android:id="@+id/swapButtonLayout"
+                    style="@style/callButtonStyle"
+                    android:drawableTop="@drawable/ic_in_call_touch_switch"
+                    android:text="@string/swap_call"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/note_layout"
+                    style="@style/callButtonStyle"
+                    android:drawableTop="@drawable/ic_in_call_touch_note"
+                    android:text="@string/record_num" />
+
+                <TextView
+                    android:id="@+id/holdButtonlayout"
+                    style="@style/callButtonStyle"
+                    android:drawableTop="@drawable/ic_in_call_touch_hold"
+                    android:text="@string/hold_call"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/muteButtonlayout"
+                    style="@style/callButtonStyle"
+                    android:drawableTop="@drawable/ic_in_call_touch_mute"
+                    android:text="@string/mute_call" />
+
+                <TextView
+                    android:id="@+id/addButtonlayout"
+                    style="@style/callButtonStyle"
+                    android:drawableTop="@drawable/ic_in_call_touch_add_call"
+                    android:text="@string/add_call" />
+
+                <TextView
+                    android:id="@+id/mergeButtonLayout"
+                    style="@style/callButtonStyle"
+                    android:drawableTop="@drawable/ic_in_call_touch_merge"
+                    android:text="@string/merge_call"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/inCallControlsRowLow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/touchui_uplayer_padding_bottom_low"
+                android:paddingLeft="@dimen/touchui_uplayer_padding_hor"
+                android:paddingRight="@dimen/touchui_uplayer_padding_hor">
+
+                <TextView
+                    android:id="@+id/audioButtonlayout"
+                    style="@style/callButtonStyle"
+                    android:drawableTop="@drawable/ic_in_call_touch_speaker"
+                    android:text="@string/speaker" />
+
+                <TextView
+                    android:id="@+id/dialpadButtonlayout"
+                    style="@style/callButtonStyle"
+                    android:drawableTop="@drawable/ic_in_call_touch_dialpad"
+                    android:text="@string/dialpad" />
+
+                <TextView
+                    android:id="@+id/recordButtonlayout"
+                    style="@style/callButtonStyle"
+                    android:drawableTop="@drawable/ic_in_call_touch_record"
+                    android:text="@string/record" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/endButtonLayout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/mz_endcall_button_height"
+                android:layout_marginBottom="@dimen/mz_endcall_button_margin_bottom"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/endButton"
+                    android:layout_width="@dimen/mz_endcall_button_width"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/bg_btn_end_call"
+                    android:gravity="center"
+                    android:src="@drawable/ic_in_call_touch_end" />
+            </RelativeLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</FrameLayout>

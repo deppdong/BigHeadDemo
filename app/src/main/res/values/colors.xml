@@ -3,4 +3,115 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <!-- color in ContactsCommom -->
+    <color name="focus_color">#44ff0000</color>
+    <color name="dialtacts_theme_color">#0288d1</color>
+    <!-- In-call UI -->
+    <color name="incall_callTypeSip">#99CE3F</color> <!-- green -->
+    <color name="incall_call_banner_background">#A0000000</color> <!-- semitransparent black -->
+    <color name="incall_secondary_info_background">#8033b5e5
+    </color> <!-- semitransparent blueish grey -->
+    <color name="incall_call_banner_text_color">#FFFFFF</color> <!-- white -->
+
+    <!-- In-call Touch UI -->
+    <color name="transparent">#00000000</color>
+
+    <color name="half_transparent">#7F000000</color>
+
+    <color name="quarter_transparent">#3F000000</color>
+
+    <color name="six_transparent">#99000000</color>
+
+    <color name="incall_textGray">#BEBEBE</color>
+
+    <color name="divider">#11ffffff</color>
+
+    <color name="button_pressed">#992eb5e6</color>
+
+    <color name="touchui_low_layer_btn_black">#333333</color>
+
+    <color name="black_ignore_pressed">#2d2d2d</color>
+
+    <color name="green_connecte_normal">#4d994d</color>
+
+    <color name="orange_pressed">#c66226</color>
+    <color name="orange_normal">#d96d21</color>
+
+    <color name="black_incoming">#D8000000</color>
+
+    <color name="nine_in_ten_white">#E5ffffff</color>
+
+    <color name="one_in_three_white">#55ffffff</color>
+
+    <!-- Color for dialpad -->
+    <color name="dialpad_bg">#000000</color>
+    <color name="dialpad_digit_secondary">#7Fffffff</color>
+    <color name="dialpad_digit_primary">#ffffff</color>
+
+    <color name="write_background">#FFFFFF</color>
+
+    <!--<color name="divide_color">#33000000</color> --><!-- Flyme5.0 -->
+
+    <color name="green_text_color">#62be66</color><!-- Flyme5.0 -->
+
+    <!-- #ifndef Flyme_EDIT -->
+    <!-- #zhulanting@comm.Phone added for flyme style -->
+    <color name="background_dialpad_color">#fafafa</color>
+    <color name="dialpad_divider_green">#43b56b</color>
+    <color name="dialpad_divider_blue">#5ecddf</color>
+    <color name="dialpad_divider_yellow">#ffd666</color>
+    <!-- #endif Flyme_EDIT -->
+    <color name="divider_dtmf">#dcdcdc</color>
+    <!-- FLYME: DY@Phone#Flyme5.0-201506 {@-->
+    <color name="incall_text_color_primary">#FFFFFFFF</color>
+    <color name="incall_text_color_secondary">#80ffffff</color> <!-- Flyme5.0 -->
+    <color name="incall_headsup_text_color_primary">#000000</color>
+    <color name="incall_headsup_text_color_secondary">#66000000</color> <!-- Flyme5.0 -->
+    <color name="color_divide_light">#27FFFFFF</color> <!-- Flyme5.0 15%alpha~= 0x27-->
+    <color name="color_divide_dark">#27000000</color> <!-- Flyme5.0 -->
+    <color name="msg_body_divider">@color/color_divide_dark</color><!-- Flyme5.0 -->
+    <color name="msg_body_background">#f5f5f5</color><!-- Flyme5.0 -->
+
+    <drawable name="call_button_disable_color">#7fffffff</drawable><!-- Flyme5.0 -->
+    <drawable name="call_button_hightlight_color">#43b66b</drawable>
+    <drawable name="call_button_enable_color">#ffffff</drawable><!-- Flyme5.0, remove alpha "aa" -->
+    <color name="incall_screen_blur_bg">#D9FFFFFF</color>
+    <drawable name="incall_screen_blur_bg">#D9FFFFFF</drawable>
+
+    <!-- Flyme5.0 copy from ContactsCommon -->
+    <color name="dialtacts_primary_text_color">#000000</color>
+    <color name="dialtacts_secondary_text_color">#888888</color>
+    <color name="dialer_theme_color">#0288d1</color>
+    <color name="dialer_theme_color_dark">#0277bd</color>
+    <!-- FLYME: DY@Phone#Flyme5.0-201506 @}-->
+
+    <!-- MultiWaveView -->
+    <color name="mwv_target_answer_color">#ff43b56b</color>
+    <color name="mwv_target_decline_color">#fff67026</color>
+    <color name="mwv_point_color">#ff3a3a3a</color>
+    <color name="mwv_handle_circle_color">#28ffffff</color>
+    <color name="mwv_target_answer_color_small">#ff6af05c</color>
+    <color name="mwv_target_decline_color_small">#fff97b4f</color>
+    <color name="mwv_point_color_small">#ffffffff</color>
+    <color name="mwv_handle_circle_color_small">#28ffffff</color>
+    <color name="select_account_checkbox_color">#80000000</color>
+    <color name="select_account_text_color">#cc000000</color>
+
+    <!-- For NotePaper -->
+    <color name="quick_edit_bg">#99000000</color>
+    <color name="card_background_color_default">#ffc1c1c1</color>
+
+    <color name="float_window_text_color">#3bc06b</color>
+    <color name="incall_screen_text_color_disable">#575957</color> <!-- Flyme6.0, 30%"aa" -->
+    <color name="incall_screen_text_color_normal">#9fa09f</color> <!-- Flyme6.0, 60%"aa" -->
+    <color name="incall_screen_text_color_highlight">#FFFFFF</color>
+    <drawable name="blue_text_color">#198DED</drawable><!-- Flyme6.0 -->
+
+    <color name="drivermode_call_status">#ffffffff</color>
+
+    <color name="videocall_callcard_gray_background">#484848</color>
+    <color name="incoming_notification_bg">#FFFFFF</color><!-- Flyme7.0 -->
+    <color name="ext_caller_info_bg_color">#40000000</color><!-- Flyme7.0 -->
+    <color name="ext_caller_info_text_secondary">#66ffffff</color><!-- Flyme7.0 -->
+    <color name="volume_key_hint_bg_color">#40000000</color><!-- Flyme7.0 -->
 </resources>

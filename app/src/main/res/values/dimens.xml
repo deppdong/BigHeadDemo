@@ -1,0 +1,576 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <!--
+         Height of the "call banner" overlay on top of the upper part of
+         the call info area.
+    -->
+    <dimen name="call_banner_height">80dp</dimen>
+
+    <!--
+         Margin between the bottom of the "call card" photo
+         and the top of the in-call button cluster.
+    -->
+    <dimen name="in_call_touch_ui_upper_margin">2dp</dimen>
+
+    <!-- Padding at the left and right edges of the "call banner". -->
+    <dimen name="call_banner_side_padding">24dp</dimen>
+    <!-- Padding at the right edges of the secondary call banner. -->
+    <dimen name="secondary_call_banner_right_padding">100dp</dimen>
+    <!-- Padding at the top and bottom edges of the "call banner". -->
+    <dimen name="call_banner_top_bottom_padding">16dp</dimen>
+
+    <!-- Padding at the top and bottom edges of the "provider information" -->
+    <dimen name="provider_info_top_bottom_padding">8dp</dimen>
+
+    <!--
+         Right padding for name and number fields in the call banner.
+         This padding is used to ensure that ultra-long names or
+         numbers won't overlap the elapsed time indication.
+    -->
+    <dimen name="call_banner_name_number_right_padding">50sp</dimen>
+
+    <!-- Height of the main row of in-call buttons. -->
+    <dimen name="in_call_button_height">76dp</dimen>
+
+    <!-- Height of the in-call "End" button. Match with Contact's dimens/call_button_height -->
+    <dimen name="in_call_end_button_height">74dp</dimen>
+
+    <!-- Width of buttons in the extra button row. -->
+    <dimen name="extra_row_button_width">56dp</dimen>
+
+    <!-- Height of buttons in the extra button row. -->
+    <dimen name="extra_row_button_height">@dimen/in_call_button_height</dimen>
+
+    <!--
+         Padding at the left and right edges of the incall_touch_ui button
+         cluster.  This padding is necessary because we can't allow the
+         buttons to be very close to the edges of the screen, due to the
+         risk of false touches (from your finger wrapping around while
+         holding the phone, *before* moving it up to your face and having
+         the prox sensor kick in.)
+    -->
+    <dimen name="button_cluster_side_padding">20dp</dimen>
+
+    <!-- Dimensions for OTA Call Card -->
+    <dimen name="otaactivate_layout_marginTop">10dp</dimen>
+    <dimen name="otalistenprogress_layout_marginTop">5dp</dimen>
+    <dimen name="otasuccessfail_layout_marginTop">10dp</dimen>
+
+    <!-- Dimensions for Emergency Dialer and dialpad inside the in-call screen -->
+    <dimen name="dialpad_horizontal_margin">4dp</dimen>
+    <dimen name="dialpad_vertical_margin">2dp</dimen>
+    <dimen name="dialpad_digits_text_size">35sp</dimen>
+
+    <!-- Just used in landscape mode -->
+    <dimen name="emergency_dialer_digits_height">0px</dimen>
+    <dimen name="dialpad_center_margin">3dp</dimen>
+
+    <!--
+         Layout weight values for dialpad screen. These layouts will be used in one
+         LinearLayout (dialpad_fragment.xml), configuring dialpad screen's vertical
+         ratio.
+    -->
+    <integer name="dialpad_layout_weight_digits">20</integer>
+    <integer name="dialpad_layout_weight_dialpad">65</integer>
+    <integer name="dialpad_layout_weight_additional_buttons">15</integer>
+
+    <!--
+         Dimension used to possibly down-scale high-res photo into what is suitable
+         for notification's large icon.
+    -->
+    <dimen name="notification_icon_size">64dp</dimen>
+
+    <!-- Circle size for incoming call widget's each item. -->
+    <dimen name="incoming_call_widget_circle_size">94dp</dimen>
+    <!--
+         Margin used for incoming call widget's icon for each item.
+         This should be same as "(incoming_call_widget_circle_size - icon_size)/2".
+         Right now answer/decline/reject icons have 38dp width/height.
+         So, (94 - 38)/2 ==> 28dp
+    -->
+    <dimen name="incoming_call_widget_asset_margin">35dp</dimen>
+
+    <!-- Size of alarm alert outer ring. -->
+    <dimen name="glowpadview_outerring_diameter">270dip</dimen>
+
+    <!-- Default target placement radius for GlowPadView. Should be 1/2 of outerring diameter. -->
+    <dimen name="glowpadview_target_placement_radius">135dip</dimen>
+
+    <!-- Default glow radius for GlowPadView -->
+    <dimen name="glowpadview_glow_radius">75dip</dimen>
+
+    <!-- Default distance beyond which GlowPadView snaps to the matching target -->
+    <dimen name="glowpadview_snap_margin">40dip</dimen>
+
+    <!-- Default distance from each snap target that GlowPadView considers a "hit" -->
+    <dimen name="glowpadview_inner_radius">15dip</dimen>
+    <dimen name="glowpadview_margin_bottom">-125dip</dimen>
+    <dimen name="glowpadview_margin_right">0dip</dimen>
+
+    <!-- for MZ UI -->
+    <dimen name="max_width_and_height_for_multiwave">44.7dip</dimen>
+
+    <!--<dimen name="mz_call_card_couple_height">118dip</dimen>
+    <dimen name="mz_call_card_single_height">90dip</dimen>--><!-- Flyme5.0 -->
+    <dimen name="mz_call_state_height">30dip</dimen>
+    <dimen name="mz_call_card_conf_icon_height">22.5dip</dimen>
+
+    <!-- Size of lockscreen outerring on unsecure unlock LockScreen -->
+    <dimen name="incoming_ringing_outerring_diameter">272dp</dimen>
+
+    <dimen name="incoming_bg_height">125dip</dimen>
+    <dimen name="incoming_bg_height_td">255dip</dimen>
+    <dimen name="touchui_lowlayer_height">100dip</dimen>
+    <dimen name="touchui_uplayer_height">100dip</dimen>
+    <dimen name="text_size_small">14sp</dimen> <!-- Flyme7 -->
+    <dimen name="text_size_big">24sp</dimen> <!-- Flyme7 -->
+    <dimen name="simple_mode_text_size_big">40dp</dimen>
+    <dimen name="simple_mode_text_size_small">20dp</dimen>
+    <dimen name="easy_mode_button_height">60dip</dimen>
+    <dimen name="text_size_small_touch">14sp</dimen>
+    <dimen name="text_size_secondary">14sp</dimen>
+    <dimen name="mz_caller_info_in_couple_padding_left">24dip</dimen> <!-- Flyme5.0 -->
+    <dimen name="mz_caller_info_in_couple_padding_right">24dip</dimen> <!-- Flyme5.0 -->
+    <dimen name="mz_caller_info_in_call_card_fillup_view"> 12dip</dimen>
+    <dimen name="mz_caller_info_in_couple_max_width">100dip</dimen>
+
+    <dimen name="mz_caller_single_padding_top">15dip</dimen>
+    <dimen name="mz_caller_conf_padding_top">23.6dip</dimen>
+    <dimen name="mz_caller_single_maxwidth">220dip</dimen>
+    <dimen name="mz_caller_conf_maxwidth">185dip</dimen>
+
+    <dimen name="dele_btn_padding_top">47.6dip</dimen>
+    <dimen name="dele_btn_margin_right">23.2dip</dimen>
+    <dimen name="input_fields_padding_bottom">26dip</dimen>
+    <dimen name="input_fields_padding_left">30dip</dimen>
+    <dimen name="input_fields_padding_right">30dip</dimen>
+    <dimen name="input_fields_conf_left">4dip</dimen>
+    <dimen name="input_fields_conf_top">1.2dip</dimen>
+    <dimen name="input_fields_record_top">27.8dip</dimen>
+    <dimen name="input_fields_icon_top">6.4dip</dimen>
+    <dimen name="input_fields_icon_right">11.2dip</dimen>
+    <dimen name="input_fields_location_left">11.8dip</dimen>
+    <dimen name="input_fields_dtmf_top">18dip</dimen>
+    <dimen name="input_fields_default_name_top">13dip</dimen><!-- Flyme5.0 -->
+    <dimen name="record_field_padding_bottom">7dip</dimen>
+
+    <!-- for couple -->
+    <dimen name="max_width_first_name">180dip</dimen>
+    <dimen name="call_card_couple_divider_margin">20dip</dimen>
+    <dimen name="max_width_second_name">180dip</dimen>
+
+    <!-- for conf panel -->
+    <dimen name="caller_info_padding_ver_in_conf">32dip</dimen>
+    <dimen name="caller_info_name_margin_left_in_conf">28dip</dimen>
+    <dimen name="caller_info_height_in_couple">55dip</dimen><!-- Flyme5.0 -->
+    <dimen name="caller_info_height_in_conf">55dip</dimen><!-- Flyme5.0 -->
+    <dimen name="max_width_in_conf_panel">250dip</dimen>
+    <dimen name="conf_panel_divier_margin_ver">19dip</dimen>
+    <dimen name="conf_panel_divier_margin_hor">23.9dip</dimen>
+    <dimen name="conf_panel_disconnect_margin_letf">8.25dip</dimen>
+    <dimen name="conf_panel_disconnect_margin_right">26dip</dimen>
+    <dimen name="conf_panel_view_div">0.8dip</dimen>
+    <dimen name="conf_panel_view_div_height">24.33dip</dimen><!-- Flyme5.0 -->
+
+    <!-- for incoming -->
+    <dimen name="incoming_widget_margin_bottom">-104.4dip</dimen>
+    <dimen name="fast_sms_respond_bottom">136dip</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- for dialpad -->
+    <dimen name="dialpad_width">336dip</dimen><!-- Flyme5.0 -->
+    <dimen name="dialpad_height">264dip</dimen>
+
+    <dimen name="dialpad_padding_bottom_for_emergency">121.3dip</dimen>
+    <dimen name="dialpad_padding_left">12dip</dimen><!-- Flyme5.0 -->
+    <dimen name="dialpad_padding_right">12dip</dimen><!-- Flyme5.0 -->
+    <dimen name="dialpad_digit_height">56dip</dimen><!-- Flyme5.0 -->
+
+    <dimen name="dialpad_delete_padding">27dip</dimen>
+    <dimen name="dialpad_digits_text_size_big_ftmf">27.5sp</dimen>
+
+    <!-- for sing -->
+    <dimen name="mz_call_card_des_margin_bottom">20dip</dimen>
+
+    <!-- for touchui -->
+    <dimen name="touchui_lowlayer_padding">11dip</dimen>
+    <dimen name="touchui_uplayer_padding_top">16dip</dimen>
+    <dimen name="touchui_uplayer_padding_hor">24dip</dimen><!-- Flyme5.0 -->
+    <dimen name="touchui_uplayer_padding_bot">24dip</dimen> <!-- Flyme5.0 -->
+    <dimen name="touchui_in_call_keypad_padding_hor">11dip</dimen>
+    <dimen name="touchui_in_call_end_margin_hor">5dip</dimen>
+    <dimen name="touchui_in_call_button_padding_top">33dip</dimen>
+    <dimen name="touchui_in_call_button_padding_bot">170dip</dimen>
+
+    <integer name="touchui_lowlayer_weight_small">1</integer>
+    <integer name="touchui_lowlayer_weight_big">2</integer>
+
+    <!-- for waiting -->
+    <dimen name="waiting_panel_padding_bottom">44.5dip</dimen>
+    <dimen name="waiting_panel_padding_hori">34.5dip</dimen>
+    <dimen name="waiting_panel_padding_top">44dip</dimen>
+    <dimen name="waiting_small_photo_size">85dip</dimen>
+    <dimen name="waiting_small_photo_margin_right">19dip</dimen>
+    <dimen name="waiting_buttons_margin">5dip</dimen>
+    <dimen name="waiting_info_padding_bottom">20dip</dimen>
+    <dimen name="waiting_button_height">52.5dip</dimen>
+    <dimen name="waiting_text_size">16sp</dimen>
+    <dimen name="waiting_callername_max_width">220dip</dimen>
+
+    <!-- for record -->
+    <dimen name="record_keypad_padding_bottom">32dip</dimen>
+    <dimen name="record_keypad_padding_hor">60dip</dimen>
+    <dimen name="record_keypad_padding_top">70.5dip</dimen>
+    <dimen name="record_keypad_btn_margin_top">12dip</dimen>
+    <dimen name="record_keypad_btn_width">240dip</dimen>
+    <dimen name="record_keypad_btn_height">38dip</dimen>
+    <dimen name="record_keypad_btn_text_size">18sp</dimen>
+
+    <!-- for ussd dialog -->
+    <dimen name="dialog_ussd_scrollv_height">130dip</dimen>
+    <dimen name="wifi_item_text_size">15sp</dimen>
+
+    <!-- for call forward UI -->
+    <dimen name="close_all_min_height">60dip</dimen>
+    <dimen name="close_all_forward_padding_top">40dip</dimen>
+    <dimen name="close_all_forward_padding_horizontal">93dip</dimen>
+
+    <dimen name="couple_call_rotate_degree">53.3dip</dimen>
+
+    <!-- for emergency dial -->
+    <dimen name="mz_dialpad_digits_height">192.4dip</dimen>
+    <dimen name="mz_dialpad_dialpad_text_margin_top">45dip</dimen>
+    <dimen name="mz_dialpad_digits_height_for_emer">264dip</dimen>
+    <dimen name="dialpad_digits_padding_top">27dip</dimen>
+    <dimen name="dialpad_digits_text_size_big">28sp</dimen><!-- Flyme5.0 -->
+    <dimen name="dialpad_digits_text_size_small">15sp</dimen>
+    <dimen name="dialpad_digits_edit_margin_top">5dip</dimen>
+    <dimen name="dialpad_digits_edit_margin_bottom">13dip</dimen>
+    <dimen name="dialpad_dialpad_pedding_bottom">14dip</dimen>
+    <dimen name="dialpad_dialpad_padding_hor">13.5dip</dimen>
+    <dimen name="dialpad_dialpad_padding_top">13dip</dimen>
+    <dimen name="dialpad_num_button_padding_top">19dip</dimen>
+    <dimen name="dialpad_image_button_padding_top">15.5dip</dimen>
+    <dimen name="dialpad_num_btn_text_marging_top">-15dip</dimen>
+    <dimen name="dialpad_button_margin">0.4dip</dimen>
+    <dimen name="dialpad_button_margin_top">0.4dip</dimen>
+    <dimen name="contacts_header_name_size">22sp</dimen>
+    <dimen name="incallui_button_height">221dip</dimen><!-- Flyme5.0 -->
+    <dimen name="simple_mode_incallui_button_height">150dip</dimen>
+    <dimen name="touchui_uplayer_padding_top_up">24.5dip</dimen>
+    <dimen name="touchui_uplayer_padding_bottom_low_startanim">16dip</dimen><!-- Flyme7 -->
+    <dimen name="touchui_endbutton_height">46.6dip</dimen><!-- Flyme5.0 -->
+    <dimen name="touchui_endbutton_bottom">20dip</dimen>
+    <dimen name="touchui_endbutton_left">34.5dip</dimen>
+    <dimen name="callcard_bottom_height">82.75dip</dimen>
+    <!-- Flyme7@DY: move down assist buttons to position ExtCallerInfoView -->
+    <dimen name="callcard_assist_padding_lr">50.33dip</dimen><!-- Flyme7 -->
+    <dimen name="callcard_assist_padding_lr_video">8dip</dimen><!-- Flyme7 -->
+    <dimen name="callcard_assist_padding_divide_lr">47dip</dimen><!-- Flyme5.0 -->
+    <dimen name="callcard_assist_divide_width">0.75dip</dimen>
+    <dimen name="incoming_assist_divide_height">19.33dip</dimen><!-- Flyme5.0 -->
+    <dimen name="incoming_assist_divide_padding">2.5dip</dimen><!-- Flyme5.0 -->
+    <!-- Flyme7@DY: move down glowpad to position ExtCallerInfoView -->
+    <dimen name="incoming_glowpad_height">198.67dip</dimen><!-- Flyme5.0 -->
+    
+    <dimen name="callcard_animation_singleinfo_height">225dip</dimen><!-- Flyme5.0 -->
+    <dimen name="callcard_animation_coupleinfo_height">243dip</dimen>
+    <dimen name="callcard_animation_singleinfo_dialing_height">264dip</dimen>
+
+    <dimen name="callcard_easymode_padding_top">230dip</dimen>
+    <dimen name="callcard_waiting_padding_height">309dip</dimen>
+    <dimen name="callcard_normal_padding_height">256dip</dimen>
+    <dimen name="mz_caller_info_text_field_margin_top">192dip</dimen><!-- Flyme7 -->
+    <dimen name="mz_caller_single_padding_top_callford_height">9dip</dimen>
+
+    <dimen name="msg_body_divider_width">0.66dip</dimen><!-- Flyme5.0 -->
+    <dimen name="msg_body_divider_vertical_padding">12.25dip</dimen>
+    <dimen name="message_body_minHeight">49.5dip</dimen>
+    <dimen name="conf_name_view_height">53dip</dimen><!-- Flyme5.0 -->
+    <dimen name="conf_title_view_margin_top">25dip</dimen><!-- Flyme5.0, equals the H of status bar -->
+    <dimen name="mz_photo_height">384dip</dimen>
+    <dimen name="mz_circle_photo_top_margin">66dp</dimen><!-- Flyme7 -->
+    <dimen name="mz_circle_photo_height">107dp</dimen><!-- Flyme7 video Call -->
+    <dimen name="simple_mode_photo_height">490dip</dimen>
+    <dimen name="touch_mz_photo_height">157dip</dimen><!-- Flyme5.0 -->
+
+    <!-- Flyme7 Voice CallCard {@-->
+    <dimen name="mz_callcard_extinfo_max_height">220dp</dimen>
+    <dimen name="mz_callcard_extinfo_top_margin_anim_from">33.33dp</dimen>
+    <dimen name="mz_callcard_extinfo_time_padding_start">3dp</dimen>
+
+    <dimen name="mz_callcard_extinfo_photo_size">50dp</dimen>
+    <dimen name="mz_callcard_extinfo_photo_margin_start">20dp</dimen>
+    <dimen name="mz_callcard_extinfo_name_margin_start">74dp</dimen>
+    <dimen name="mz_callcard_extinfo_name_margin_start_nophoto">7.67dp</dimen>
+    <dimen name="mz_callcard_extinfo_margin_lr">12dp</dimen>
+    <dimen name="mz_callcard_extinfo_title_padding_lr">12dp</dimen>
+
+    <dimen name="mz_endcall_button_margin_bottom_anim_start">2.33dip</dimen>
+    <dimen name="mz_callcard_extinfo_line1_spacing">3.67dip</dimen>
+    <dimen name="mz_callcard_extinfo_textsize_secondary">14sp</dimen>
+    <dimen name="mz_callcard_extinfo_padding_lr">12dp</dimen>
+    <dimen name="mz_callcard_extra_icon_text_size">10sp</dimen>
+    <dimen name="mz_callcard_extra_icon_margin_top">13.33sp</dimen>
+    <dimen name="mz_callcard_ext_info_extra_icon_margin_top">15.33sp</dimen>
+    <dimen name="mz_callcard_extra_icon_margin_left">6sp</dimen>
+    <dimen name="mz_callcard_ext_info_sim_icon_margin_top">6sp</dimen>
+    <dimen name="mz_callcard_extra_icon_padding_horizontal">2dp</dimen>
+    <dimen name="mz_callcard_extra_icon_padding_vertical">0.67dp</dimen>
+    <dimen name="mz_callcard_extra_icon_bg_rect_radius">1dp</dimen>
+    <!-- Flyme7 Voice CallCard @}-->
+
+    <dimen name="call_label_dtmf_height">33dip</dimen>
+    <dimen name="call_label_dtmf_active">24.5dip</dimen>
+    <dimen name="call_label_dtmf_dialing">12dip</dimen>
+    <dimen name="call_label_origin_height">82.5dip</dimen>
+    <dimen name="input_fields_location_left_integer">11.7dip</dimen>
+    <dimen name="call_label_touch_topview_height">37.75dip</dimen>
+    <dimen name="incoming_panel_padding_bottom">310.5dip</dimen>
+    <dimen name="incoming_sms_response_width">360dip</dimen><!-- Flyme5.0 -->
+    <dimen name="conf_divide_list_padding">12dip</dimen><!-- Flyme5.0 -->
+    <dimen name="answer_sms_list_height">58dip</dimen><!-- Flyme5.0 -->
+    <dimen name="answer_sms_divide_padding">12dip</dimen><!-- Flyme5.0 -->
+    <dimen name="small_photo_width_height">100dip</dimen>
+    <dimen name="small_photo_height_padding">40dip</dimen>
+    <dimen name="small_photo_height_margin_bottom">20dip</dimen>
+
+    <!-- 每条通知左侧通知图标的大小 -->
+    <!-- The width of the small icons in notifications. -->
+    <dimen name="mz_notification_small_icon_width">40dp</dimen>
+    <!-- The width of the small icons in notifications. -->
+    <dimen name="mz_notification_small_icon_height">40dp</dimen>
+    <dimen name="touch_couple_call_info_padding">37dip</dimen>
+    <dimen name="touch_call_photo_padding">28.25dip</dimen>
+    <dimen name="touch_incall_button_margin_bottom">341.25dip</dimen>
+    <dimen name="touch_incall_button_margin_right">65.5dip</dimen>
+
+    <!-- SIM Indicator Icon size -->
+    <dimen name="mz_sim_indicator_width">15dip</dimen>
+    <dimen name="mz_sim_indicator_height">11.4dip</dimen>
+
+    <dimen name="answer_mms_animation_height">256dip</dimen>
+    <!--<dimen name="mms_edit_space_padding_right">20dip</dimen>
+    <dimen name="mms_edit_send_padding">15dip</dimen> -->
+    <dimen name="text_size_smallest">14sp</dimen>
+    <dimen name="touchmode_small_photo_padding_bottom">-50dip</dimen>
+    <dimen name="single_name_max_width">240dip</dimen>
+    <dimen name="single_name_max_height">53dip</dimen>
+    <dimen name="mz_photo_height_for_navigation">157dip</dimen>
+
+    <dimen name="mz_simple_sim_indicator_width">23dip</dimen>
+    <dimen name="mz_simple_sim_indicator_height">18dip</dimen>
+
+    <!-- FLYME: DY@Phone#Flyme5.0-201506 {@-->
+    <!-- Flyme7@DY: expand callcard to position ExtCallerInfoView -->
+    <dimen name="mz_caller_info_height">180dip</dimen>
+    <dimen name="divider_normal_width">0.66dip</dimen>
+    <dimen name="signle_call_info_offset_when_keypad_on">90dip</dimen>
+
+    <dimen name="call_status_slide_notice_height">50dip</dimen>
+    <dimen name="call_status_slide_hide_button_width">40dp</dimen>
+    <dimen name="call_status_slide_text_size">9dp</dimen>
+    <dimen name="status_bar_content_height">19dip</dimen>
+    <dimen name="mz_caller_info_single_number_top">1.66dip</dimen><!-- Flyme7 -->
+    <dimen name="mz_caller_info_single_status_top">8dip</dimen>
+    <!-- icon默认间距: topMargin应该跟随字体变化,因此设为sp -->
+    <dimen name="mz_sim_icon_margin_start">4sp</dimen> <!-- Select Account Dialogs -->
+    <dimen name="mz_caller_info_sim_icon_margin_top">8sp</dimen>
+    <dimen name="mz_endcall_button_margin_bottom">30dip</dimen>
+    <dimen name="mz_endcall_button_height">46.33dip</dimen>
+    <dimen name="mz_endcall_button_width">130dip</dimen>
+    <dimen name="mz_caller_info_couple_padding_top">18.33dip</dimen>
+    <dimen name="mz_sms_editor_height">50dip</dimen><!-- keypad height(-26) isn't enough to cover sms list view -->
+    <dimen name="mz_sms_editor_padding_lr">17dip</dimen>
+    <dimen name="mz_sms_editor_padding_right">60dip</dimen><!-- right17+button26+right17-->
+    <dimen name="mz_sms_editor_send_btn_width">26dip</dimen>
+    <dimen name="mz_sms_editor_send_btn_height">26dip</dimen>
+    <dimen name="conf_item_content_left_padding">24dip</dimen>
+    <dimen name="conf_item_content_right_padding">22dip</dimen>
+    <dimen name="conf_title_num_left_padding">13.33dip</dimen>
+    <dimen name="conf_title_icon_content_width">11.33dip</dimen>
+    <dimen name="conf_title_icon_left_padding">9dip</dimen>
+    <dimen name="conf_title_icon_width">66.33dip</dimen><!-- leftPadding+content+rightPadding -->
+    <dimen name="conf_item_name_width">158.33dip</dimen>
+    <dimen name="conf_item_separate_padding">24dip</dimen>
+    <dimen name="conf_item_disconnect_padding">22dip</dimen> 
+    <dimen name="answer_sms_bottombar_height">64dip</dimen>
+    <dimen name="notification_large_icon_size">40dip</dimen>
+    <!--heads-up-->
+    <dimen name="incoming_headsup_layout_height">72dip</dimen>
+    <dimen name="incoming_headsup_padding">18dip</dimen>
+    <dimen name="incoming_headsup_btn_interval">5dip</dimen>
+    <dimen name="incoming_headsup_btn_padding">8.75dip</dimen>
+    <dimen name="incoming_headsup_icion_view_width">60dip</dimen>
+    <dimen name="incoming_headsup_icion_size">39dip</dimen>
+    <dimen name="incoming_headsup_primary_padding_left">8dip</dimen>
+    <dimen name="incoming_headsup_primary_padding_right">14dip</dimen>
+    <dimen name="incoming_headsup_primary_small_icon_padding">5dip</dimen>
+    <dimen name="incoming_headsup_text_size">16sp</dimen>
+    <!--unsed TODO: remove them-->
+    <dimen name="callcard_assist_divide_height">27dip</dimen>
+    <dimen name="mz_caller_single_padding_top_height">36.3dip</dimen>
+    <dimen name="conf_name_view_paddingtop">22.5dip</dimen>
+    <dimen name="callcard_assist_padding_top">22.5dip</dimen>
+    <dimen name="mz_incall_ui_layout_width">180dip</dimen>
+    <dimen name="mz_incall_ui_layout_height">320dip</dimen>
+    <dimen name="mz_dialpad_key_button_ripple_diameter">70dp</dimen>
+    <!-- FLYME: DY@Phone#Flyme5.0-201506 @}-->
+    <!-- meizu MultiWaveView -->
+    <!-- Default target placement radius for MultiWaveView -->
+    <dimen name="mwv_target_placement_radius">156.75dp</dimen>
+    <!-- Size of lockscreen outerring on unsecure unlock LockScreen -->
+    <dimen name="mwv_incoming_ringing_outerring_diameter">313.5dp</dimen>
+    <dimen name="mwv_point_circle_radius">61.25dp</dimen>
+    <dimen name="mwv_point_radius">1dp</dimen>
+    <dimen name="mwv_target_placement_radius_height">210dp</dimen>
+    <!-- the distance of Answer/Decline point(left) to the handle circle(right). -->
+    <dimen name="mwv_distance_between_target_and_handle">74dp</dimen>
+    <dimen name="mwv_target_min_radius">4dp</dimen>
+    <dimen name="mwv_target_max_radius">35dp</dimen>
+    <dimen name="mwv_target_snap_radius">30dp</dimen>
+    <dimen name="mwv_handle_circle_width">1.25dp</dimen>
+    <dimen name="mwv_handle_default_bg_circle_radius">35dp</dimen>
+    <dimen name="mwv_handle_wave_circle_max_radius">56dp</dimen>
+    <dimen name="mwv_shot_pointes_min_x">53dp</dimen>
+    <dimen name="mwv_shot_pointes_max_x">171dp</dimen>
+    <dimen name="mwv_two_wave_circles_spacing">9dp</dimen>
+    <dimen name="mwv_shot_point1_radius">6dp</dimen>
+    <dimen name="mwv_shot_point2_radius">3.335dp</dimen>
+    <dimen name="mwv_shot_point3_radius">2.8dp</dimen>
+    <dimen name="mwv_shot_point_distance1to2">29.67dp</dimen>
+    <dimen name="mwv_shot_point_distance2to3">24dp</dimen>
+
+    <!-- meizu MultiWaveView small -->
+    <!-- Default target placement radius for MultiWaveView -->
+    <dimen name="mwv_target_placement_radius_small">137.5dp</dimen>
+    <!-- Size of lockscreen outerring on unsecure unlock LockScreen -->
+    <dimen name="mwv_incoming_ringing_outerring_diameter_small">275dp</dimen>
+    <dimen name="mwv_point_circle_radius_small">54.25dp</dimen>
+    <dimen name="mwv_point_radius_small">1dp</dimen>
+    <dimen name="mwv_target_placement_radius_height_small">150.5dp</dimen>
+    <!-- the distance of Answer/Decline point(center) to the center(0, 0). -->
+    <dimen name="mwv_distance_between_target_and_handle_small">72dp</dimen>
+    <dimen name="mwv_target_min_radius_small">3dp</dimen>
+    <dimen name="mwv_target_max_radius_small">32dp</dimen>
+    <dimen name="mwv_target_snap_radius_small">44dp</dimen>
+    <dimen name="mwv_handle_default_bg_circle_radius_small">32dp</dimen>
+    <dimen name="mwv_handle_wave_circle_max_radius_small">62dp</dimen>
+    <dimen name="mwv_shot_pointes_min_x_small">42dp</dimen>
+    <dimen name="mwv_shot_pointes_max_x_small">143dp</dimen>
+    <dimen name="mwv_two_wave_circles_spacing_small">7dp</dimen>
+    <dimen name="mwv_shot_point1_radius_small">5.33dp</dimen>
+    <dimen name="mwv_shot_point2_radius_small">3dp</dimen>
+    <dimen name="mwv_shot_point3_radius_small">1.33dp</dimen>
+    <dimen name="mwv_shot_point_distance1to2_small">20dp</dimen>
+    <dimen name="mwv_shot_point_distance2to3_small">24dp</dimen>
+    <dimen name="sms_reply_continer_max_height">169dip</dimen>
+    <dimen name="sms_reply_max_height">85dip</dimen>
+    <dimen name="sms_reply_title_padding_top">36dip</dimen>
+    <dimen name="sms_reply_title_padding_bottom">12dip</dimen>
+    <dimen name="sms_reply_padding">20dip</dimen>
+    <dimen name="volume_key_tip_height">30dip</dimen>
+    <dimen name="volume_key_tip_margin_left">12dip</dimen>
+    <dimen name="volume_key_tip_margin_top">26dip</dimen>
+    <dimen name="volume_text_margin_lr">9dip</dimen>
+
+    <!-- for:notepaper's editText -->
+    <dimen name="translucent_edit_height">209.6dip</dimen>
+    <dimen name="translucent_edit_horizontal_margin">15.2dip</dimen>
+    <dimen name="translucent_edit_top_margin">49dip</dimen>
+    <dimen name="translucent_edit_top_padding">16dip</dimen>
+    <dimen name="translucent_edit_horizontal_padding">16dip</dimen>
+    <dimen name="translucent_edit_font_size">18sp</dimen>
+    <dimen name="widget_text_line_space">10dip</dimen>
+
+    <dimen name="easy_mode_sim_indicator_left_padding">8dip</dimen>
+
+    <dimen name="extra_call_icon_width">25dip</dimen>
+    <dimen name="extra_call_icon_height">15dip</dimen>
+
+    <integer name="config_activityAnimTime">50</integer>
+    <dimen name="cardframe_width">128dp</dimen>
+    <dimen name="cardframe_height">128dp</dimen>
+
+    <dimen name="incoming_video_call_headsup_text_size">14sp</dimen>
+    <dimen name="video_preview_margin_left">20dp</dimen>
+    <dimen name="video_preview_margin_top">36dp</dimen>
+
+    <!-- 浮动窗口默认屏幕位置 -->
+    <dimen name="float_window_defx">286.6dp</dimen>
+    <dimen name="float_window_defy">77.3dp</dimen>
+
+    <!-- 滑动Call Button Indicator padding -->
+    <dimen name="incall_bottom_indicator_padding">8dp</dimen>
+
+    <!-- 挂断原因 -->
+    <dimen name="disconnect_message_text_size">14sp</dimen>
+    <dimen name="disconnect_message_btn_text_size">18sp</dimen>
+
+    <!-- 来电,接听/挂断响应位置 -->
+    <dimen name="mwv_ball_start_x">100.67dp</dimen>
+
+    <!-- 浮动窗口默认横屏屏幕位置 -->
+    <dimen name="float_window_land_defx">565dp</dimen>
+    <dimen name="float_window_land_defy">70dp</dimen>
+    <dimen name="dialog_listview_height">192dip</dimen>
+    <dimen name="dialog_listview_width">312dip</dimen>
+
+    <!-- 视频电话preview大小 -->
+    <dimen name="video_callcard_outgoing_margin_top">800dp</dimen>
+    <dimen name="video_callcard_outgoing_margin_left">20dp</dimen>
+    <dimen name="video_callcard_incall_margin_top">300dp</dimen>
+    <dimen name="video_preview_layout_width">84dp</dimen>
+    <dimen name="video_preview_layout_height">112dp</dimen>
+    <dimen name="bg_in_call_to_video_stroke">4px</dimen>
+    <dimen name="bg_in_call_to_video_height">32dp</dimen>
+    <dimen name="bg_in_call_to_video_radius">16dp</dimen>
+    <dimen name="in_call_to_video_padding">@dimen/bg_in_call_to_video_radius</dimen>
+
+    <!-- 游戏模式来电默认屏幕位置 -->
+    <dimen name="mini_headsup_width">207dip</dimen>
+    <dimen name="mini_headsup_height">120dip</dimen>
+    <dimen name="mini_headsup_defx">170dip</dimen>
+    <dimen name="mini_headsup_defy">0dip</dimen>
+    <dimen name="mini_headsup_land_defx">450dip</dimen>
+    <dimen name="mini_headsup_land_defy">0dip</dimen>
+    <dimen name="mini_reject_margin_left">39dip</dimen>
+    <dimen name="mini_animation_x">73dip</dimen>
+
+    <dimen name="voice_photo_margin_top">@dimen/mz_circle_photo_top_margin</dimen>
+    <dimen name="voice_photo_margin_top_anim_start">55dp</dimen>
+    <dimen name="voice_photo_size">108dp</dimen>
+    <dimen name="voice_caller_info_margin_top">187dp</dimen>
+    <dimen name="switch_to_video_padding">16dp</dimen>
+    <dimen name="video_photo_size">60dp</dimen>
+    <dimen name="video_caller_info_margin_start">16dp</dimen>
+    <dimen name="video_caller_info_margin_top">37dp</dimen>
+
+    <!--修改以下内容需要同步检查下 values-sw360dp values-xxxhdpi 文件中的内容-->
+    <dimen name="callcard_assist_padding_bottom">263.66dip</dimen>
+    <dimen name="switch_to_video_margin_top">20dp</dimen>
+    <!-- 拨号盘弹出时，CallerInfo距顶部位置 -->
+    <dimen name="voice_caller_info_margin_top_dialpad_on">90dp</dimen>
+    <!-- 浮动窗口宽高 -->
+    <dimen name="float_window_audio_call_width">73.3dp</dimen>
+    <dimen name="float_window_audio_call_height">73.3dp</dimen>
+    <!-- 驾驶模式悬浮窗 -->
+    <dimen name="suspension_view_width">124dp</dimen>
+    <dimen name="suspension_view_height">146dp</dimen>
+    <!-- 视频电话 -->
+    <dimen name="video_call_status_margin_top">529.69dp</dimen>
+    <!--callbutton上一排按钮距离下一栏按钮距离-->
+    <dimen name="touchui_uplayer_padding_bottom_up">27dip</dimen><!-- Flyme7.0 -->
+    <!--callbutton底部一排按钮距离挂断按钮距离-->
+    <dimen name="touchui_uplayer_padding_bottom_low">50dip</dimen><!-- Flyme7 -->
+    <!-- dtmf输入框底部距dtmf拨号键顶部距离 -->
+    <dimen name="dialpad_editor_margin_bottom">66dip</dimen><!-- Flyme5.0 -->
+    <!-- dtmf底部距屏幕底部距离 -->
+    <dimen name="dialpad_padding_bottom">197dip</dimen><!-- Flyme5.0 -->
+    <!-- 来电识别卡片距屏幕顶部距离 -->
+    <dimen name="mz_callcard_extinfo_top_margin">60dp</dimen><!-- Flyme7 -->
+    <!--修改以上内容需要同步检查下 values-sw360dp values-xxxhdpi 文件中的内容-->
+</resources>
