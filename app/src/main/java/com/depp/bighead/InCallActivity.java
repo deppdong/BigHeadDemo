@@ -17,6 +17,7 @@ public class InCallActivity extends Activity {
     private View mHeadContainer;
     private ImageView mHeadImage;
     private ImageView mHeadImageExtra;
+    private ImageView mHeadImageDest;
     private boolean mImageLoaded = false;
 
     private final static int MSG_LOAD_HEAD_IMAGE = 1;
@@ -46,6 +47,7 @@ public class InCallActivity extends Activity {
         mHeadContainer = findViewById(R.id.head_container);
         mHeadImage = (ImageView) findViewById(R.id.head_img);
         mHeadImageExtra = (ImageView) findViewById(R.id.head_img_extra);
+        mHeadImageDest = (ImageView) findViewById(R.id.head_img_dest);
         findViewById(R.id.callcard).setVisibility(View.INVISIBLE);
 
         findViewById(R.id.endButton).setOnClickListener(new View.OnClickListener() {
@@ -78,6 +80,7 @@ public class InCallActivity extends Activity {
                 mHeadImage.setImageBitmap(mBitmapHelper.getCurBitmap());
                 mHeadImageExtra.setImageBitmap(mBitmapHelper.getBitmapExtra());
 
+                mHeadImageDest.setImageBitmap(mBitmapHelper.getDestBitmap());
                 mHeadContainer.setVisibility(View.VISIBLE);
                 mHeadContainer.startAnimation(getHaedAnimatior());
             }

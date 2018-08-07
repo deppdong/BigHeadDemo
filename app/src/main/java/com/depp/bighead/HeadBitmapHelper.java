@@ -3,7 +3,9 @@ package com.depp.bighead;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.os.AsyncTask;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -49,6 +51,9 @@ public class HeadBitmapHelper {
      */
     private Bitmap mBitmapExtra;
 
+    private Bitmap mDestBitmap;
+
+
     /**
      * 屏幕宽
      */
@@ -81,6 +86,11 @@ public class HeadBitmapHelper {
             mSrcBitmap.recycle();
         }
 
+        if (mDestBitmap != null) {
+            mDestBitmap.recycle();
+            mDestBitmap = null;
+        }
+
         int resId = HeadImages.sDrawableId[HeadImages.sIndex];
         mSrcBitmap = BitmapFactory.decodeResource(mContext.getResources(), resId);
 
@@ -94,7 +104,14 @@ public class HeadBitmapHelper {
             return;
         }
 
-        mSrcBitmap = bitmap;
+        int width = bitmap.getWidth();
+
+        float scaleX = ((float) sScreenWidth)/bitmap.getWidth();
+        float scaleY =  ((float) sScreenWidth)/bitmap.getHeight();
+        Matrix matrix = new Matrix();
+        matrix.postScale(scaleX, scaleY); //缩放到图片宽度与屏幕宽度一样
+        mSrcBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(),
+                bitmap.getHeight(), matrix, true);
 
         new BitmapTask(callback).execute();
     }
@@ -149,6 +166,7 @@ public class HeadBitmapHelper {
             // TODO 生成混合蒙层图
 //            generateMixFrontLayerBitmap();
             generateBitmapExtra();
+            generateDestBitmap();
             return null;
         }
 
@@ -160,6 +178,21 @@ public class HeadBitmapHelper {
                 callback.onExceuteDone();
             }
         }
+    }
+
+
+    private Bitmap generateDestBitmap() {
+        mDestBitmap = Bitmap.createBitmap(sScreenWidth, sScreenHeight, Bitmap.Config.ARGB_8888);
+
+        Canvas canvas = new Canvas(mDestBitmap);
+        canvas.drawBitmap(mSrcBitmap, 0, 0, null);
+        canvas.drawBitmap(mBitmapExtra, 0, 0, null);
+        canvas.drawBitmap(mDefFrontLayerBitmap, 0, 0, null);
+        return mDestBitmap;
+    }
+
+    public Bitmap getDestBitmap() {
+        return mDestBitmap;
     }
 
     private void doAlpha(int[] pixels, int width, int height) {
@@ -175,7 +208,6 @@ public class HeadBitmapHelper {
                 pixels[j * width + i] = Color.argb(desAlpha, red, green, blue);
             }
         }
-
     }
 
     /**

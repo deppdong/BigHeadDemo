@@ -17,13 +17,15 @@
             android:id="@+id/head_img"
             android:layout_width="360dp"
             android:layout_height="360dp"
-            android:scaleType="fitXY"/>
+            android:scaleType="fitXY"
+            android:visibility="gone"/>
 
         <ImageView
             android:id="@+id/head_img_extra"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="fitXY" />
+            android:scaleType="fitXY"
+            android:visibility="gone"/>
 
         <ImageView
             android:id="@+id/head_img_front"
@@ -31,7 +33,15 @@
             android:layout_height="match_parent"
             android:clickable="false"
             android:src="@drawable/bighead_front_layer"
-            android:scaleType="fitXY" />
+            android:scaleType="fitXY"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/head_img_dest"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="false"
+            android:scaleType="fitXY"/>
     </FrameLayout>
 
 
